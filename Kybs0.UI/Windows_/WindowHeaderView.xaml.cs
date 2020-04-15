@@ -20,9 +20,13 @@ namespace Kybs0.UI
     /// </summary>
     public partial class WindowHeaderView : UserControl
     {
-        public WindowHeaderView()
+        public WindowHeaderView(DefinedWindowType definedWindowType)
         {
             InitializeComponent();
+            if (definedWindowType==DefinedWindowType.GrayTitleDialog)
+            {
+                MinimizeButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void HeaderGridOnMouseLeftButtonDown(object sender, MouseButtonEventArgs args)

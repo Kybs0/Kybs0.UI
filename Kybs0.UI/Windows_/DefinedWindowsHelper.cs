@@ -23,14 +23,16 @@ namespace Kybs0.UI
             {
                 switch (definedWindowType)
                 {
-                    case DefinedWindowType.GrayTitleBar:
+                    case DefinedWindowType.GrayTitleWindow:
+                    case DefinedWindowType.GrayTitleDialog:
                         {
                             window.AllowsTransparency = true;
                             window.WindowStyle = WindowStyle.None;
                             window.Background = Brushes.Transparent;
+
                             if (window.IsLoaded)
                             {
-                                SetWindowGrayStyle(window);
+                                SetWindowGrayStyle(window, definedWindowType);
                             }
                             else
                             {
@@ -39,7 +41,7 @@ namespace Kybs0.UI
                                 void WindowOnLoaded(object sender, RoutedEventArgs args)
                                 {
                                     window.Loaded -= WindowOnLoaded;
-                                    SetWindowGrayStyle(window);
+                                    SetWindowGrayStyle(window, definedWindowType);
                                 }
                             }
                         }
@@ -49,7 +51,7 @@ namespace Kybs0.UI
 
         }
 
-        private static void SetWindowGrayStyle(Window window)
+        private static void SetWindowGrayStyle(Window window, DefinedWindowType definedWindowType)
         {
             window.BorderBrush = (Brush)new BrushConverter().ConvertFromString("#D0D1D6");
             var rootBorder = new Border()
@@ -66,7 +68,7 @@ namespace Kybs0.UI
             WindowChrome.SetIsHitTestVisibleInChrome(window, true);
             rootBorder.Child = mainGrid;
 
-            var windowHeaderView = new WindowHeaderView();
+            var windowHeaderView = new WindowHeaderView(definedWindowType);
             windowHeaderView.SetValue(Grid.RowProperty, 0);
             mainGrid.Children.Add(windowHeaderView);
 
@@ -99,6 +101,10 @@ namespace Kybs0.UI
         /// <summary>
         /// 灰色背景标题栏
         /// </summary>
-        GrayTitleBar,
+        GrayTitleWindow,
+        /// <summary>
+        /// 灰色背景
+        /// </summary>
+        GrayTitleDialog,
     }
 }
