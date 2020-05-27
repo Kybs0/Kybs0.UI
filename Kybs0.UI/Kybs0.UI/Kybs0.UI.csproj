@@ -58,23 +58,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleLoading_\CircleLoading.xaml.cs">
-      <DependentUpon>CircleLoading.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlHelper.cs" />
     <Compile Include="Converters_\EmptyOrNullToVisibilityConverter.cs" />
     <Compile Include="Windows_\DefinedWindowsHelper.cs" />
     <Compile Include="Windows_\WindowHeaderView.xaml.cs">
       <DependentUpon>WindowHeaderView.xaml</DependentUpon>
     </Compile>
-    <Page Include="CircleLoading_\CircleLoading.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
